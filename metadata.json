@@ -1,0 +1,6 @@
+{
+  "name": "Hệ thống Quản lý Nhân sự & Tiền lương Công ty",
+  "description": "Hệ thống quản lý nhân sự, chấm công trực quan, tự động tính lương, phụ cấp, OT, BHXH, thuế TNCN và bảng lương chi tiết.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: #1e293b;
+    background-color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* =========================================================================
+   TỐI ƯU HÓA XUẤT PDF & IN ẤN BẰNG CSS @media print
+   Đáp ứng chuẩn tài liệu A4, giữ màu sắc, căn chỉnh lề, ngắt trang thông minh
+   ========================================================================= */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ẩn toàn bộ các thành phần điều hướng, nút bấm, toast không cần in */
+  .no-print,
+  header,
+  footer,
+  nav,
+  button,
+  input,
+  select,
+  .toast-container {
+    display: none !important;
+  }
+
+  /* Khi in qua Modal, vô hiệu hóa overlay tối và fixed position để trang in mượt mà */
+  .print-modal-backdrop {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .print-modal-card {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  .print-document-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Chống ngắt trang giữa chừng tại các khối thông tin quan trọng */
+  .print-avoid-break,
+  tr,
+  tbody tr,
+  .signature-block,
+  .summary-banner {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Tối ưu hóa bảng in cho sắc nét */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  /* Tiêu chuẩn hiển thị chỉ khi in */
+  .print-only {
+    display: block !important;
+  }
+}
